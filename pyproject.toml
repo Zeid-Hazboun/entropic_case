@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "entropic-case"
+version = "0.1.0"
+description = ""
+authors = ["Zeid-Hazboun <z.g.h.hazboun@student.rug.nl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
