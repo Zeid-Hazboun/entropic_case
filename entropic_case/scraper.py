@@ -66,11 +66,9 @@ for project in project_data:
     project_details.append([title, link, code, status, start_date, description])
 
 # Save all project details to a single CSV file
-with open(combined_csv_filename, mode='w', newline='', encoding='utf-8') as file:
+with open(csv_filename, mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
-    writer.writerow(["Project Title", "Link", "Code", "Status", "Start Date", "Description"])
+    writer.writerow(["project_title", "link", "code", "status", "start_date", "description"])
     writer.writerows(project_details)
-
-print(f"Combined project details have been saved to {csv_filename}.")
 
 
