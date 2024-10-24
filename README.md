@@ -57,13 +57,13 @@ Good luck and have fun! 😁
 
 ## Solution
 
-Other than the requirements in the pyproject.toml file, there are no requirements to run the solutions. **You only need to change the file paths, since it is using the full path instead of the relative path. Places where this should be done with have the comment "#change file path to local one" for ease**
+Other than the requirements in the pyproject.toml file, there are no requirements to run the solutions. **You only need to change the file paths, since it is using the full path instead of the relative path. Places where this should be done with have the comment "#change file path to local one" for ease**.
 
 I have also left the data in the repository (`data/`) instead of adding it to the `.gitignore file`, so you would not have to rerun the program/if you wanted to see specific talking points mentioned in this file. 
 
 ### Scrapper
 
-Starting with the the scraper (`scraper.py`), we use Beautifulsoup to parse the html content. After examining the code of the website,We saw that all the projects are under the 'article' tag, so we used this to identify each project. The title and hyperlink for each project was collected. The link was then used to further scrape each individual project.
+Starting with the the scraper (`scraper.py`), we use BeautifulSoup to parse the HTML content. After examining the website’s structure, we saw that all projects are under the 'article' tag, which we used to identify each project. The title and hyperlink for each project was collected. The link was then used to further scrape each individual project.
 
 I started by initializing the values present in almost every project (**code, status. start date, description**). We then extract the information using the corresponding keys in the 'entry-mete' div. Afterwards, we extract the description from the 'entry-content' div. This information is then placed in a csv sheet which will then include the **project_title, link, code, status, start_date,** and **description**.
 
@@ -75,9 +75,9 @@ First step was removing the end section of each description. The web pages have 
 
 #### TF-IDF
 
-My solution to filter the topics was based on using keywords in combination with tf-idf, and then scoring the topics based on the combined tf-idf values present in the matrix pf these topics. I believe this to be a more time efficient solution that requires less understanding of the core concepts of decarbonization of industrial heat. The following are the list of keywords used after some researching of the topic: **['decarbonization', 'carbon', 'emissions', 'industrial heat', 'renewable', 'capture', 'electrification', 'reduction', 'emission', 'industrial', 'sustainability', 'co2', 'waste', 'heat recovery', 'waste heat', 'thermal efficiency', 'heat pump','zero-emission']**. 
+My solution to filter the topics was based on using keywords in combination with tf-idf, and then scoring the topics based on the combined tf-idf values present in the matrix pf these topics. I believe this to be a more time-efficient solution that requires less in-depth knowledge of the core concepts of decarbonization of industrial heat. The following are the list of keywords used after some researching of the topic: **['decarbonization', 'carbon', 'emissions', 'industrial heat', 'renewable', 'capture', 'electrification', 'reduction', 'emission', 'industrial', 'sustainability', 'co2', 'waste', 'heat recovery', 'waste heat', 'thermal efficiency', 'heat pump','zero-emission']**. 
 
-Once the scores were computed, we can see that there seems to me a natural threshold point around 0.5, so that was chosen as the threshold. If we wanted to be more lenient, the threshold could be lowered easily. A new CSV file was created that only includes the projects above the threshold.
+Once the scores were computed, a natural threshold point around 0.5 became apparent, so this value was chosen. If we wanted to be more lenient, the threshold could be lowered easily. A new CSV file was created that only includes the projects above the threshold.
 
 Other ideas to tackle the filtering problem included using BERT topic modelling and LDA. The reason for not doing them is that I believe topic modelling using BERT might require more of a core understanding of the topic to recognize the correct topics, as well as topics might be grouped together based on different characteristics (the language of completed topics vs ongoing and so on). 
 
@@ -94,7 +94,7 @@ For the last part of the case, I had to use an LLM to generate a brief summary o
 | bart     | 0.487179| 0.157895| 0.307692| 0.435897   |
 | pegasus  | 0.866667| 0.655172| 0.800000| 0.833333   |
 
-The descriptions in the filtered csv file were used to generate the summaries. The original descriptions were used, instead of the pre-processed descriptions. This is because the lack of stopwards and punctuation caused the consequent summary to not be coherent. Here is an example of the same summary, one made according the cleaned description and the other by the orignal description in one of the trials.
+The descriptions in the filtered csv file were used to generate the summaries. The original descriptions were used instead of the pre-processed descriptions, as the lack of stopwords and punctuation in the pre-processed text caused the summaries to be less coherent. Here is an example of the same summary, one made according to the cleaned description and the other by the orignal description in one of the trials.
 
 * **Cleaned**: 'Two virtual public simulation case simulationas enable partner share promote expertise without disclose confidential information.\nGoal is to develop innovative process design solving efficient flexible electrification challenge .'
 
@@ -103,7 +103,7 @@ The descriptions in the filtered csv file were used to generate the summaries. T
 
 We can see that the second summary is much more coherent and readable than the first, and therefore we used the original description for the rest of the summaries. Examining the length of the summary, we can see that it had a length of 480 words, while the original description had 3860 words.
 
-After generating the summaries, I decided to also compute the ROGUE metric for the summaries.
+After generating the summaries, I computed the ROUGE metric to evaluate their quality.
 
 | Index | rouge1  | rouge2  | rougeL  |
 |-------|---------|---------|---------|
@@ -179,4 +179,4 @@ Now that the summaries were generated and examined, I also generated the summari
 
 ## Conclusion
 
-This project successfully implements a system to scrape, classify, and summarize case studies related to the decarbonization of industrial heat. By leveraging modern NLP techniques, such as TF-IDF for classification and Pegasus for summarization, the solution provides efficient and explainable results. Future improvements could involve fine-tuning the summarization model for domain-specific text and exploring more advanced classification techniques (possibly training a model of its own to classify this if enough data is available).
+This project successfully implements a system to scrape, classify, and summarize case studies related to the decarbonization of industrial heat. By leveraging modern NLP techniques, such as TF-IDF for classification and Pegasus for summarization, the solution provides efficient and explainable results. Future improvements could involve fine-tuning the summarization model for domain-specific text and exploring more advanced classification techniques. If enough data is available, training a custom classification model could also be considered.
