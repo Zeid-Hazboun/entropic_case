@@ -131,8 +131,8 @@ Now that the summaries were generated and examined, I also generated the summari
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone <https://github.com/Zeid-Hazboun/entropic_case>
+   cd <entropic_case>
    ```
 
 2. **Install Poetry** (if you don’t have it already):
