@@ -1,4 +1,12 @@
-# Interview Case for Entropic
+## Table of Contents
+- [Introduction](#introduction)
+- [Problem Statement](#problem-statement)
+- [Solution](#solution)
+- [How to Run the Project](#how-to-run-the-project)
+- [Conclusion](#conclusion)
+
+
+# Introduction
 
 The purpose of this repository is to contain the interview assignment as well as proposed solutions for the AI research intern position at Entropic. This solution focuses on helping Entropic achieve its mission of decarbonizing industrial heat by creating an automated system to classify and summarize relevant case studies. The approach balances both accuracy and interpretability while ensuring efficiency. Below, you will first find the case itself. Afterwards, you can find the solution, different files, as well as the reasons for choosing specific methods.
 
